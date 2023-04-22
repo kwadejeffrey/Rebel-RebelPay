@@ -2,9 +2,9 @@
 
 namespace Rebel\RebelPay;
 
+use Rebel\RebelPay\Commands\RebelPayCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Rebel\RebelPay\Commands\RebelPayCommand;
 
 class RebelPayServiceProvider extends PackageServiceProvider
 {
