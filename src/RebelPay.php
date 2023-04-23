@@ -5,71 +5,70 @@ namespace Rebel\RebelPay;
 use Rebel\RebelPay\Traits\StartRequest;
 use Rebel\RebelPay\Traits\Transactions;
 
-
-
 class RebelPay
 {
     use StartRequest, Transactions;
 
     public function makePayment($data)
     {
-        
-        try{
+
+        try {
             $response = $this->startRequest($data);
+
             return \redirect($response->data->authorization_url);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
 
         }
     }
 
-    public function getAllTransactions($perPage = 70,$page =1, $status = null)
+    public function getAllTransactions($perPage = 70, $page = 1, $status = null)
     {
-        try{
-            return $this->fetchTransactions($perPage,$page, $status);
-        }catch(\Exception $e){
-            
-        }
-    }
-
-    public function getSuccessfulTransactions($perPage = 70,$page =1, $status = 'success')
-    {
-        try{
-            $response = $this->fetchTransactions($perPage,$page, $status);
-            return $response;
-        }catch(\Exception $e){
+        try {
+            return $this->fetchTransactions($perPage, $page, $status);
+        } catch (\Exception $e) {
 
         }
     }
 
-    public function getFailedTransactions($perPage = 70,$page =1, $status = 'failed')
+    public function getSuccessfulTransactions($perPage = 70, $page = 1, $status = 'success')
     {
-        try{
-            $response = $this->fetchTransactions($perPage,$page, $status);
+        try {
+            $response = $this->fetchTransactions($perPage, $page, $status);
 
             return $response;
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
 
         }
     }
 
-
-    public function getAbandonedTransactions($perPage = 70,$page =1, $status = 'abandoned')
+    public function getFailedTransactions($perPage = 70, $page = 1, $status = 'failed')
     {
-        try{
-            $response = $this->fetchTransactions($perPage,$page, $status);
+        try {
+            $response = $this->fetchTransactions($perPage, $page, $status);
 
             return $response;
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
+
+        }
+    }
+
+    public function getAbandonedTransactions($perPage = 70, $page = 1, $status = 'abandoned')
+    {
+        try {
+            $response = $this->fetchTransactions($perPage, $page, $status);
+
+            return $response;
+        } catch (\Exception $e) {
 
         }
     }
 
     public function getTransaction($id)
     {
-        try{
+        try {
             return $this->fetchTransaction($id);
-        }catch(\Exception $e){
-            
+        } catch (\Exception $e) {
+
         }
     }
 
@@ -78,10 +77,11 @@ class RebelPay
      */
     public function exportTransactions()
     {
-        try{
+        try {
             $response = $this->traitExport();
+
             return \redirect($response->data->path);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
 
         }
     }
@@ -91,9 +91,9 @@ class RebelPay
      */
     public function totalTransactions()
     {
-        try{
+        try {
             return $this->transactionTotal();
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
 
         }
     }
