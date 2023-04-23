@@ -2,11 +2,11 @@
 
 // config for Rebel/RebelPay
 return [
-    "publickey" => env('PAYSTACK_PUBLIC_KEY'),
+    'publickey' => env('PAYSTACK_PUBLIC_KEY'),
 
-    "secretkey" => env('PAYSTACK_SECRET_KEY'),
+    'secretkey' => env('PAYSTACK_SECRET_KEY'),
 
-    "paystackurl" => env('PAYSTACK_PAYMENT_URL'),
+    'paystackurl' => env('PAYSTACK_PAYMENT_URL'),
 
-    "merchantmail" => env('MERCHANT_EMAIL')
+    'merchantmail' => env('MERCHANT_EMAIL'),
 ];
