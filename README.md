@@ -1,8 +1,8 @@
 # Paystack Laravel package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/rebel/rebel-rebelpay.svg?style=flat-square)](https://packagist.org/packages/rebel/rebel-rebelpay)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/rebel/rebel-rebelpay/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/rebel/rebel-rebelpay/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/rebel/rebel-rebelpay/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/rebel/rebel-rebelpay/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/rebel/rebel-rebelpay/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/RebelNii/Rebel-RebelPay/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/rebel/rebel-rebelpay/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/RebelNii/Rebel-RebelPay/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/rebel/rebel-rebelpay.svg?style=flat-square)](https://packagist.org/packages/rebel/rebel-rebelpay)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
