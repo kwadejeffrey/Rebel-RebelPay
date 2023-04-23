@@ -4,6 +4,9 @@ namespace Rebel\RebelPay\Traits;
 
 trait StartRequest
 {
+    /**
+     * Function to initialize payment
+     */
     protected function startRequest($data, $url = 'https://api.paystack.co/transaction/initialize')
     {
 
