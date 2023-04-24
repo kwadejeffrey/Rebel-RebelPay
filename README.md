@@ -71,10 +71,10 @@ php artisan vendor:publish --tag="rebel-rebelpay-views"
 
 ## Environment Variables
 
-`PAYSTACK_PUBLIC_KEY= insert your Paystack public key`
-`PAYSTACK_SECRET_KEY= insert your Paystack secret key`
-`PAYSTACK_PAYMENT_URL=https://api.paystack.co`
-`MERCHANT_EMAIL= kwadejeffrey@gmail.com`
+- `PAYSTACK_PUBLIC_KEY= insert your Paystack public key`
+- `PAYSTACK_SECRET_KEY= insert your Paystack secret key`
+- `PAYSTACK_PAYMENT_URL=https://api.paystack.co`
+- `MERCHANT_EMAIL= kwadejeffrey@gmail.com`
 
 ## Usage/Examples
 
