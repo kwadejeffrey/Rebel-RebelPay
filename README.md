@@ -5,15 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/rebel/rebel-rebelpay/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/RebelNii/Rebel-RebelPay/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/rebel/rebel-rebelpay.svg?style=flat-square)](https://packagist.org/packages/rebel/rebel-rebelpay)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/Rebel-RebelPay.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/Rebel-RebelPay)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This is a Laravel composer package that simplifies accepting payments on [Paystack](https://paystack.com).
 
 ## Installation
 
@@ -40,6 +32,13 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'publickey' => env('PAYSTACK_PUBLIC_KEY'),
+
+    'secretkey' => env('PAYSTACK_SECRET_KEY'),
+
+    'paystackurl' => env('PAYSTACK_PAYMENT_URL'),
+
+    'merchantmail' => env('MERCHANT_EMAIL'),
 ];
 ```
 
@@ -49,7 +48,35 @@ Optionally, you can publish the views using
 php artisan vendor:publish --tag="rebel-rebelpay-views"
 ```
 
-## Usage
+## Features
+- Payments
+- Get all transactions records from Paystack
+- Get single transaction record from Paystack
+- Fetch all successful transaction Paystack
+- Fetch all failed transaction Paystack
+- Fetch all abandoned transaction Paystack
+- Export transactions in csv format
+- Fetch transactions history
+
+## Workflow of this package
+
+# The customer is redirected to the payment provider's site.
+- After customer completes the checkout form on your website, feed the package with the necessary data and the customer will be redirect to [paystack](https://paystack.com/) to complete payment.
+
+# The customer arrives on paystack platform
+- After the customer is redirected to [paystack](https://paystack.com/), they can choose from the available payment options based on your account settings with [paystack](https://paystack.com/) and complete the transaction.
+
+# Customer is redirect to website
+- After the customer has completed the transaction on [Paystack's](https://paystack.com/) website, they will be redirected back to a route that we have set up in our Laravel application instead of relying on [Paystack's](https://paystack.com/) callback webhook.
+
+## Environment Variables
+
+`PAYSTACK_PUBLIC_KEY= insert your Paystack public key`
+`PAYSTACK_SECRET_KEY= insert your Paystack secret key`
+`PAYSTACK_PAYMENT_URL=https://api.paystack.co`
+`MERCHANT_EMAIL= kwadejeffrey@gmail.com`
+
+## Usage/Examples
 
 ```php
 $rebelPay = new Rebel\RebelPay();

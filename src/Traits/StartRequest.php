@@ -7,7 +7,7 @@ trait StartRequest
     /**
      * Function to initialize payment
      */
-    protected function startRequest($data, $url = 'https://api.paystack.co/transaction/initialize')
+    protected function startRequest(array $data, $url = 'https://api.paystack.co/transaction/initialize')
     {
 
         $field = http_build_query($data);
@@ -29,7 +29,10 @@ trait StartRequest
 
     }
 
-    protected function getReference($reference)
+    /**
+     * Verify transaction using reference key in query string 
+     */
+    protected function getReference(string $reference)
     {
         $curl = curl_init();
 
@@ -54,10 +57,12 @@ trait StartRequest
         return $response;
     }
 
+    /**
+     * We use this function to initialize a callback instead of depending of the paystack dashboard callback webhook
+     */
     public function callback()
     {
         $response = json_decode($this->getReference(request('reference')));
-        // dd($response);
         return $response;
 
     }

@@ -9,7 +9,7 @@ class RebelPay
 {
     use StartRequest, Transactions;
 
-    public function makePayment($data)
+    public function makePayment(array $data)
     {
 
         try {
@@ -63,7 +63,7 @@ class RebelPay
         }
     }
 
-    public function getTransaction($id)
+    public function getTransaction(int $id)
     {
         try {
             return $this->fetchTransaction($id);
@@ -78,7 +78,20 @@ class RebelPay
     public function exportTransactions()
     {
         try {
-            $response = $this->traitExport();
+            $response = $this->traitExportTransactions();
+
+            return \redirect($response->data->path);
+        } catch (\Exception $e) {
+
+        }
+    }
+    /**
+     * export Transaction in CVS format
+     */
+    public function exportFilteredTransactions(string $status = "")
+    {
+        try {
+            $response = $this->traitExportFilteredTransactions($status);
 
             return \redirect($response->data->path);
         } catch (\Exception $e) {
