@@ -85,10 +85,11 @@ class RebelPay
 
         }
     }
+
     /**
      * export Transaction in CVS format
      */
-    public function exportFilteredTransactions(string $status = "")
+    public function exportFilteredTransactions(string $status = '')
     {
         try {
             $response = $this->traitExportFilteredTransactions($status);
