@@ -85,6 +85,7 @@ trait Transactions
 
         return $err;
     }
+
     /**
      * Protected function to export filtered transactions record in csv format
      */

@@ -30,7 +30,7 @@ trait StartRequest
     }
 
     /**
-     * Verify transaction using reference key in query string 
+     * Verify transaction using reference key in query string
      */
     protected function getReference(string $reference)
     {
@@ -63,6 +63,7 @@ trait StartRequest
     public function callback()
     {
         $response = json_decode($this->getReference(request('reference')));
+
         return $response;
 
     }
