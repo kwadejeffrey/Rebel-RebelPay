@@ -21,19 +21,19 @@ class RebelPay
         }
     }
 
-    public function getAllTransactions($perPage = 70, $page = 1, $status = null)
+    public function getAllTransactions($perPage = 100, $page = 1)
     {
         try {
-            return $this->fetchTransactions($perPage, $page, $status);
+            return $this->fetchTransactions($perPage, $page, $status = null);
         } catch (\Exception $e) {
 
         }
     }
 
-    public function getSuccessfulTransactions($perPage = 70, $page = 1, $status = 'success')
+    public function getSuccessfulTransactions($perPage = 100, $page = 1)
     {
         try {
-            $response = $this->fetchTransactions($perPage, $page, $status);
+            $response = $this->fetchTransactions($perPage, $page, $status = 'success');
 
             return $response;
         } catch (\Exception $e) {
@@ -41,10 +41,10 @@ class RebelPay
         }
     }
 
-    public function getFailedTransactions($perPage = 70, $page = 1, $status = 'failed')
+    public function getFailedTransactions($perPage = 100, $page = 1)
     {
         try {
-            $response = $this->fetchTransactions($perPage, $page, $status);
+            $response = $this->fetchTransactions($perPage, $page, $status = 'failed');
 
             return $response;
         } catch (\Exception $e) {
@@ -52,10 +52,10 @@ class RebelPay
         }
     }
 
-    public function getAbandonedTransactions($perPage = 70, $page = 1, $status = 'abandoned')
+    public function getAbandonedTransactions($perPage = 100, $page = 1)
     {
         try {
-            $response = $this->fetchTransactions($perPage, $page, $status);
+            $response = $this->fetchTransactions($perPage, $page, $status = 'abandoned');
 
             return $response;
         } catch (\Exception $e) {

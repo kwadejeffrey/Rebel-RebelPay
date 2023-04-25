@@ -130,6 +130,122 @@ class Controller extends BaseController
         $res = RebelPay::makePayment($data);
         return view('rebelPay.pageOne');
     }
+
+     public function getCallbackData()
+    {
+        /**
+         * In the method that corresponds to the callback url
+         * We'll call the callbackData on rebelPay 
+         * An object is returned (Status, Message and Data)
+         * Status has a value of "True"
+         * Message has a value of "Verification successful"
+         * And data returns an object of the transactions data
+         * The important keys to note in the data attribute is (status, reference, amount, authorization, customer, channel )
+         * You can't deploy your code is diverse ways using these attributes
+         * You can clear the cart from DB or simply invalidate it depending on your DB structure
+         */
+        $res = RebelPay::callbackData();
+        dd($res);
+        //You could do something like this
+        if($res->data->status){
+            Cart::where('user_id', $user_id)->delete();
+        }
+        //You could pass the status as a session
+        return redirect('/')->with('message', $res->data->status);
+    }
+
+    /**
+     * We'll use this function to return all our transactions from Paystack
+     */
+    public function getAllTransactionsFromPaystack()
+    {
+        /**
+         * By default this we'll return a status, message, data and meta attributes
+         * The data is what we need so pass it to the blade view or vue component
+         * This method return the 100 transactions, you can alter the number
+         * This method holds two arguments ($perPage = 100, $page = 1)
+         * You can adjust them as you see fit 
+         */
+        $res = RebelPay::getAllTransactions();
+        dd($res);
+        return view('rebelPay.pageOne', [
+            'transactions' => $res->data
+        ]);
+    }
+
+
+    /**
+     * We'll use this function to return all our Failed transactions from Paystack
+     */
+    public function getFailedTransactionsFromPaystack()
+    {
+        /**
+         * By default this we'll return a status, message, data and meta attributes
+         * The data is what we need so pass it to the blade view or vue component
+         * This method return the 100 transactions, you can alter the number
+         * This method holds two arguments ($perPage = 100, $page = 1)
+         * You can adjust them as you see fit 
+         */
+        $res = RebelPay::getFailedTransactions();
+        dd($res);
+        return view('rebelPay.pageOne', [
+            'transactions' => $res->data
+        ]);
+    }
+
+
+    /**
+     * We'll use this function to return all our successful transactions from Paystack
+     */
+    public function getSuccessfulTransactionsFromPaystack()
+    {
+        /**
+         * By default this we'll return a status, message, data and meta attributes
+         * The data is what we need so pass it to the blade view or vue component
+         * This method return the 100 transactions, you can alter the number
+         * This method holds two arguments ($perPage = 100, $page = 1)
+         * You can adjust them as you see fit 
+         */
+        $res = RebelPay::getSuccessfulTransactions();
+        dd($res);
+        return view('rebelPay.pageOne', [
+            'transactions' => $res->data
+        ]);
+    }
+
+
+    /**
+     * We'll use this function to return all our abandoned transactions from Paystack
+     */
+    public function getAbandonedTransactionsFromPaystack()
+    {
+        /**
+         * By default this we'll return a status, message, data and meta attributes
+         * The data is what we need so pass it to the blade view or vue component
+         * This method return the 100 transactions, you can alter the number
+         * This method holds two arguments ($perPage = 100, $page = 1)
+         * You can adjust them as you see fit 
+         */
+        $res = RebelPay::getAbandonedTransactions();
+        dd($res);
+        return view('rebelPay.pageOne', [
+            'transactions' => $res->data
+        ]);
+    }
+
+    /**
+     * Method to get a targeted transaction from Paystack
+     */
+    public function getTransactionFromPaystack(int $id)
+    {
+        /**
+         * Pass the transaction id as an argument
+         * e.g 2749916096
+         */
+        $res = RebelPay::getTransaction($id);
+    }
+
+
 }
 
 
