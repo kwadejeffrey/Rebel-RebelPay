@@ -48,7 +48,14 @@
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "format": "vendor/bin/pint",
+        "post-install-cmd": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "php artisan key:generate",
+            "echo \"Would you like to star our GitHub repository? (y/n)\"",
+            "read answer",
+            "if echo \"$answer\" | grep -iq '^y'; then open https://github.com/RebelNii/Rebel-RebelPay; fi"
+        ]
     },
     "config": {
         "sort-packages": true,
