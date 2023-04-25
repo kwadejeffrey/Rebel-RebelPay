@@ -60,13 +60,13 @@ php artisan vendor:publish --tag="rebel-rebelpay-views"
 
 ## Workflow of this package
 
-# The customer is redirected to the payment provider's site.
+1. The customer is redirected to the payment provider's site.
 - After customer completes the checkout form on your website, feed the package with the necessary data and the customer will be redirect to [paystack](https://paystack.com/) to complete payment.
 
-# The customer arrives on paystack platform
+2. The customer arrives on paystack platform
 - After the customer is redirected to [paystack](https://paystack.com/), they can choose from the available payment options based on your account settings with [paystack](https://paystack.com/) and complete the transaction.
 
-# Customer is redirect to website
+3. Customer is redirect to website
 - After the customer has completed the transaction on [Paystack's](https://paystack.com/) website, they will be redirected back to a route that we have set up in our Laravel application instead of relying on [Paystack's](https://paystack.com/) callback webhook.
 
 ## Environment Variables
@@ -81,6 +81,58 @@ php artisan vendor:publish --tag="rebel-rebelpay-views"
 ```php
 $rebelPay = new Rebel\RebelPay();
 echo $rebelPay->echoPhrase('Hello, Rebel!');
+```
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+use Rebel\RebelPay\Facades\RebelPay;
+
+class Controller extends BaseController
+{
+    public function paystackCheckout(Request $request)
+    {
+        //Let's validate form data
+        $validated_data = $request->validate([
+            'first_name' => 'required', 
+            'last_name' => 'required',
+            'email' => 'required', 
+            'amount' => 'required',
+        ]);
+
+        /**
+         * Let's build our Paystack data
+         * Always multiply amount by 100
+         * First, Last and phone name are optional for direct payments
+         * callback_url is optional since we can set a default callback on Paystacks' dashboard but if we set a value for it, it'll overwrite the dashboard default value.
+         * I personally prefer setting a value in my code
+         * You use any of your applications web routes' name as the callback_url
+         */
+        $data = [
+            'email' => $validated_data->email,
+            'amount' => $validated_data->amount * 100,
+            'first_name' => $validated_data->first_name,
+            'last_name' => $validated_data->last_name,
+            'phone' => $validated_data->tel,
+            'callback_url' => route('callback')
+        ];
+
+        /**
+         * Let's call Rebelpay with the makePayment method
+         * And let's inject the data array into the method
+         * We'll be redirect to the paystack website to complete transaction
+         */
+        $res = RebelPay::makePayment($data);
+        return view('rebelPay.pageOne');
+    }
+}
+
+
 ```
 
 ## Testing

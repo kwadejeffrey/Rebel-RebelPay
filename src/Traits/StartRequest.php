@@ -60,7 +60,7 @@ trait StartRequest
     /**
      * We use this function to initialize a callback instead of depending of the paystack dashboard callback webhook
      */
-    public function callback()
+    public function callbackData()
     {
         $response = json_decode($this->getReference(request('reference')));
 
