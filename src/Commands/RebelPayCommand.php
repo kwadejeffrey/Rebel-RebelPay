@@ -8,7 +8,7 @@ class RebelPayCommand extends Command
 {
     public $signature = 'paystack';
 
-    public $description = 'My command';
+    public $description = 'Command to ask users to star Github repo';
 
     public function handle(): int
     {
