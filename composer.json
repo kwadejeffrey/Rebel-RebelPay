@@ -48,10 +48,7 @@
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint",
-        "post-install-cmd": [
-            "php post-install-cmd.php"
-        ]
+        "format": "vendor/bin/pint"
     
     },
     "config": {
