@@ -14,13 +14,17 @@ You can install the package via composer:
 ```bash
 composer require rebel/rebel-rebelpay
 ```
+Run this command to publish the config file and all necessary files:
+```php
+php artisan rebel-rebelpay:install
+```
 
-You can publish and run the migrations with:
+<!-- You can publish and run the migrations with:
 
 ```bash
 php artisan vendor:publish --tag="rebel-rebelpay-migrations"
 php artisan migrate
-```
+``` -->
 
 You can publish the config file with:
 
@@ -42,11 +46,11 @@ return [
 ];
 ```
 
-Optionally, you can publish the views using
+<!-- Optionally, you can publish the views using
 
 ```bash
 php artisan vendor:publish --tag="rebel-rebelpay-views"
-```
+``` -->
 
 ## Features
 - Payments
