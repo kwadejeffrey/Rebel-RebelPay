@@ -50,8 +50,9 @@
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/pint",
         "post-install-cmd": [
-            "@php -r \"if (strtoupper(trim(readline('Do you want to star our package repository? [y/N] '))) !== 'Y') { return; } else { exec('open https://github.com/RebelNii/Rebel-RebelPay'); }\""
-          ]
+            "php post-install-cmd.php"
+        ]
+    
     },
     "config": {
         "sort-packages": true,
