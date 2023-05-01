@@ -110,10 +110,6 @@ trait Customer
     {
         $url = 'https://api.paystack.co/customer/deactivate_authorization';
 
-        // $fields = [
-        //     "authorization_code": "AUTH_72btv547"
-        // ];
-
         $fields_string = http_build_query($data);
 
         //open connection
