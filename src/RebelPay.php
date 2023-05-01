@@ -68,7 +68,7 @@ class RebelPay
 
     public function deactivateCustomer(array $data)
     {
-       return $this->deactivateClient($data);
+        return $this->deactivateClient($data);
     }
 
     /**
