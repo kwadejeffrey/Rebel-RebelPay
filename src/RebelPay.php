@@ -71,6 +71,9 @@ class RebelPay
        return $this->deactivateClient($data);
     }
 
+    /**
+     * Get list of All Transactions from Paystack
+     */
     public function getAllTransactions($perPage = 100, $page = 1)
     {
         try {
