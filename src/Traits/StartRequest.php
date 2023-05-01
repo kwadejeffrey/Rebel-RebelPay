@@ -17,7 +17,8 @@ trait StartRequest
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $field);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Authorization: Bearer '.env('PAYSTACK_SECRET_KEY'),
+            'Authorization: Bearer '.config('rebel-rebelpay.secretkey'),
+            // 'Authorization: Bearer '.env('PAYSTACK_SECRET_KEY'),
             'Cache-Control: no-cache',
         ]);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -45,7 +46,7 @@ trait StartRequest
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => [
-                'Authorization: Bearer '.env('PAYSTACK_SECRET_KEY'),
+                'Authorization: Bearer '.config('rebel-rebelpay.secretkey'),
                 'content-type: application/json',
                 'Cache-Control: no-cache',
             ],

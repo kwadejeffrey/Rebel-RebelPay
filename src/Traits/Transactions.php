@@ -14,7 +14,7 @@ trait Transactions
 
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Authorization: Bearer '.env('PAYSTACK_SECRET_KEY'),
+            'Authorization: Bearer '.config('rebel-rebelpay.secretkey'),
             'Cache-Control: no-cache',
         ]);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -42,7 +42,7 @@ trait Transactions
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => [
-                'Authorization: Bearer '.env('PAYSTACK_SECRET_KEY'),
+                'Authorization: Bearer '.config('rebel-rebelpay.secretkey'),
                 'content-type: application/json',
                 'Cache-Control: no-cache',
             ],
@@ -70,7 +70,7 @@ trait Transactions
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => [
-                'Authorization: Bearer '.env('PAYSTACK_SECRET_KEY'),
+                'Authorization: Bearer '.config('rebel-rebelpay.secretkey'),
                 'content-type: application/json',
                 'Cache-Control: no-cache',
             ],
@@ -102,7 +102,7 @@ trait Transactions
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => [
-                'Authorization: Bearer '.env('PAYSTACK_SECRET_KEY'),
+                'Authorization: Bearer '.config('rebel-rebelpay.secretkey'),
                 'content-type: application/json',
                 'Cache-Control: no-cache',
             ],
@@ -131,7 +131,7 @@ trait Transactions
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => [
-                'Authorization: Bearer '.env('PAYSTACK_SECRET_KEY'),
+                'Authorization: Bearer '.config('rebel-rebelpay.secretkey'),
                 'content-type: application/json',
                 'Cache-Control: no-cache',
             ],
