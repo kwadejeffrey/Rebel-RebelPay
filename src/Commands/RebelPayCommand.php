@@ -17,15 +17,15 @@ class RebelPayCommand extends Command
             // ...
             $repoUrl = 'https://github.com/RebelNii/Rebel-RebelPay';
 
-                if (PHP_OS_FAMILY == 'Darwin') {
-                    exec("open {$repoUrl}");
-                }
-                if (PHP_OS_FAMILY == 'Windows') {
-                    exec("start {$repoUrl}");
-                }
-                if (PHP_OS_FAMILY == 'Linux') {
-                    exec("xdg-open {$repoUrl}");
-                }
+            if (PHP_OS_FAMILY == 'Darwin') {
+                exec("open {$repoUrl}");
+            }
+            if (PHP_OS_FAMILY == 'Windows') {
+                exec("start {$repoUrl}");
+            }
+            if (PHP_OS_FAMILY == 'Linux') {
+                exec("xdg-open {$repoUrl}");
+            }
         }
 
         return self::SUCCESS;
