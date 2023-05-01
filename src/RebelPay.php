@@ -29,6 +29,9 @@ class RebelPay
 
     /**
      * Create a customer on Paystack
+     *
+     *
+     * @return string JSON-encoded string representing the customer information.
      */
     public function customer(array $data)
     {

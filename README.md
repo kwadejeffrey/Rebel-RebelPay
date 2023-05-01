@@ -130,32 +130,65 @@ class Controller extends BaseController
          * Let's call Rebelpay with the makePayment method
          * And let's inject the data array into the method
          * We'll be redirect to the paystack website to complete transaction
-         */
-        $res = RebelPay::makePayment($data);
-        return view('rebelPay.pageOne');
-    }
-
-     public function getCallbackData()
-    {
-        /**
-         * In the method that corresponds to the callback url
-         * We'll call the callbackData on rebelPay 
-         * An object is returned (Status, Message and Data)
+         * A json_decoded with these attributes (Status, Message and Data) is returned
          * Status has a value of "True"
          * Message has a value of "Verification successful"
-         * And data returns an object of the transactions data
          * The important keys to note in the data attribute is (status, reference, amount, authorization, customer, channel )
-         * You can't deploy your code is diverse ways using these attributes
+         * You can deploy your code is diverse ways using these attributes
          * You can clear the cart from DB or simply invalidate it depending on your DB structure
          */
-        $res = RebelPay::callbackData();
-        dd($res);
-        //You could do something like this
+        $res = RebelPay::makePayment($data);
+        // You could do something like this
         if($res->data->status){
             Cart::where('user_id', $user_id)->delete();
         }
         //You could pass the status as a session
         return redirect('/')->with('message', $res->data->status);
+        return view('rebelPay.pageOne');
+    }
+
+    /**
+     * Create a customer on Paystack
+     * 
+     * @param array $data
+     * 
+     * @return string JSON-encoded string representing the customer information.
+     */
+    public function letsCreateACustomer()
+    {
+        $data = [
+            "email" => "customer@email.com",
+            "first_name" => "Zero",
+            "last_name" => "Sumthing",
+            "phone" => "+233500005737"
+        ];
+
+        $res = RebelPay::createCustomer($data);
+        dd($res);
+    }
+
+    public function letsUpdateCustomer()
+    {
+        /**
+     * Update customer profile
+     *
+     * @param array $data
+     * @param string $id
+     * @return string JSON-encoded string representing the customer information.
+     */
+        $res = RebelPay::updateCustomer(array $data, string $id)
+    }
+
+    /**
+     * Get a specific customer's profile from Paystack
+     *
+     * @param  string  $identifier Can be either email or customer ID
+     * @return string JSON-encoded string representing the customer information.
+     */
+    public function letsGetACustomer($identifier)
+    {
+        
+        return $res = RebelPay::getClient($identifier);
     }
 
     /**
