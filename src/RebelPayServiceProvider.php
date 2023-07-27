@@ -25,7 +25,7 @@ class RebelPayServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
-                    // ->publishAssets()
+                    ->publishAssets()
                     ->publishMigrations()
                     ->askToRunMigrations()
                     // ->copyAndRegisterServiceProviderInApp()
