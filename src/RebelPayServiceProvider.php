@@ -28,7 +28,7 @@ class RebelPayServiceProvider extends PackageServiceProvider
                     // ->publishAssets()
                     ->publishMigrations()
                     ->askToRunMigrations()
-                    ->copyAndRegisterServiceProviderInApp()
+                    // ->copyAndRegisterServiceProviderInApp()
                     ->askToStarRepoOnGitHub('kwadejeffrey/Rebel-RebelPay');
             });
     }
