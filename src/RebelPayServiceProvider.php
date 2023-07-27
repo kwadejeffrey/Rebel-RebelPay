@@ -26,8 +26,8 @@ class RebelPayServiceProvider extends PackageServiceProvider
                 $command
                     ->publishConfigFile()
                     // ->publishAssets()
-                    // ->publishMigrations()
-                    // ->askToRunMigrations()
+                    ->publishMigrations()
+                    ->askToRunMigrations()
                     // ->copyAndRegisterServiceProviderInApp()
                     ->askToStarRepoOnGitHub('kwadejeffrey/Rebel-RebelPay');
             });
