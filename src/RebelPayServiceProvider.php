@@ -20,7 +20,7 @@ class RebelPayServiceProvider extends PackageServiceProvider
             ->name('rebel-rebelpay')
             ->hasConfigFile()
             // ->hasViews()
-            // ->hasMigration('create_rebel-rebelpay_table')
+            ->hasMigration('create_rebel-rebelpay_table')
             ->hasCommand(RebelPayCommand::class)
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
